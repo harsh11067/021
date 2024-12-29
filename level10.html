@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DOM Project</title>
+  <style>
+    .kong{
+      border:none;
+      background-color: black;
+      color: aliceblue;
+      border-radius: 80px 80px 80px 80px;
+      transform: scale(1.5);
+      cursor: pointer;
+      margin-bottom: 40px;
+      margin-left: 95px;
+    }
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      font-size: 20px;
+    }
+    p1{font-size: 30px;}
+    .js-input{
+      font-size: 20px;
+      
+    }
+    .js-totalcost{
+      font-size: 40px;
+    }
+    p2{
+      font-size: 30px;
+    }
+    p3{
+      font-size: 30px;
+    }
+    .klik{
+      font-size: 20px ;
+      background-color: green;
+      color: aliceblue;
+    }
+    
+  </style>
+  <h1>Project</h1>
+</head>
+<body>
+
+  <p1>YouTube Subscribe Button</p1><p>
+    <button 
+    class="js-subscribe-button  kong"
+  onclick="
+    subscribe();
+  ">Subscribe</button><p ></p>
+  <p2>Rock Paper Scissors</p2><br>
+  <a href="http://127.0.0.1:5501/09rookie.html">Click here</a><br />&nbsp;<br />
+    
+
+  <p3>Amazon Shipping Calculator</p3><br>
+  <p4>Orders under $40 = +$10 shipping.</p4><br>
+  <p5>Orders over $40 = FREE shipping.</p5><br>
+  <input
+  class="js-input"
+  placeholder="cost of order" 
+  onkeydown="console.log(event.key);
+  if(event.key === 'Enter' ){
+    calctotal();
+  }
+  ">
+  <button 
+  class="klik"
+  onclick="
+     calctotal();
+  ">Calculate</button>
+  <p class="js-totalcost"></p>
+  <script>
+    function calctotal(){
+      const inputElement = document.querySelector('.js-input');
+      let cost = Number(inputElement.value);
+      if(cost< 40){
+        cost = cost + 10;
+      }
+      
+      document.querySelector('.js-totalcost').innerHTML=`$${cost}`;
+
+    }
+    document.querySelector('.js-input').addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        calctotal(); // Call the calculate function
+      }
+    })
+    function subscribe(){
+      const buttonElement = document.querySelector('.js-subscribe-button');
+        if (buttonElement.innerText === 'Subscribe') {
+          buttonElement.innerHTML = 'Subscribed';
+        } else {
+          buttonElement.innerHTML = 'Subscribe';
+        }
+    }
+
+
+  </script>
+</body>
+</html>
